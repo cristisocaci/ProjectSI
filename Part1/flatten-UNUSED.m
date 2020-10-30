@@ -1,6 +1,5 @@
 function [Xflat] = flatten(X1,X2)
-% creates a matrix that contains all the combinations between x1 and x2
-% values
+
 len1 = length(X1);
 len2 = length(X2);
 x1i = zeros(1,len1*len2);
