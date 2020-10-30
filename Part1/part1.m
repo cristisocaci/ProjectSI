@@ -10,15 +10,15 @@ mse = zeros(1, maxdegree);
 
 for m = 1:maxdegree
     % Identification
-    Xflat = flatten(id.X1,id.X2);
+    %Xflat = flatten(id.X1,id.X2); -----------
     Yflat = reshape(id.Y, length(id.Y)^2, 1);
-    regr = regressor(Xflat,m);
+    %regr = regressor(Xflat,m); -----------
     theta = regr\Yflat;
     
     % Validation
     Xflatval = flatten(val.X1, val.X2);
     Yflatval = reshape(val.Y, length(val.Y)^2, 1);
-    regr = regressor(Xflatval, m);
+    %regr = regressor(Xflatval, m); ------------------
     yhatflat = regr*theta;
     yhat = reshape(yhatflat, length(val.X2), length(val.X2));
     if m==10
