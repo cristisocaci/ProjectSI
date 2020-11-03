@@ -6,12 +6,15 @@ Yflat = reshape(id.Y, length(id.Y)^2, 1);
 Xflatval = flatten(val.X{1}, val.X{2});
 Yflatval = reshape(val.Y, length(val.Y)^2, 1);
 
-maxdegree = 20;
-mse = zeros(1, maxdegree);
+maxdegree = 35;
+mseid = zeros(1, maxdegree);
+mseval = zeros(1, maxdegree);
 for m = 1:maxdegree
     % Identification
     regr = regressor(Xflat(:,1),Xflat(:,2),m);
     theta = regr\Yflat;
+    yhatid = regr*theta;
+    mseid(m) = immse(yhatid, Yflat);
     
     % Validation
     regr = regressor(Xflatval(:,1),Xflatval(:,2), m);
@@ -20,12 +23,14 @@ for m = 1:maxdegree
     if m==10
         yhatstar = yhat;
     end
-    mse(m) = immse(yhat, val.Y);
+    mseval(m) = immse(yhat, val.Y);
 end
-subplot(211), plot(1:maxdegree, mse),title("MSE vs degree")
-subplot(212), plot(6:maxdegree, mse(6:end)), title("Zoom in")
+plot(1:maxdegree, mseid),title("Identification MSE vs degree")
+figure
+subplot(211), plot(1:maxdegree, mseval),title("Validation MSE vs degree")
+subplot(212), plot(6:22, mseval(6:22)), title("Zoom in")
 % from plot => MSE min is for m = 10
-msestar = min(mse);
+msestar = min(mseval);
 figure
 surf(val.X{1},val.X{2}, yhatstar)
 hold on
