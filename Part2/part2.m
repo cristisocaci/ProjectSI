@@ -5,7 +5,7 @@ load("data.mat")
 %figure, plot(val); title("Validation data")
 
 na = 2; nb =2; nk = 1;
-m = 3;
+m = 2;
 
 d = [-arxform(id.y', na, 1), arxform(id.u', nb, nk)];
 pd = regressor(d,m); 

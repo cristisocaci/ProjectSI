@@ -10,6 +10,7 @@ function [out] = deg(d,m)
         end
     end
     
-
+  
+    
 end
 

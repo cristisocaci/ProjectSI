@@ -6,4 +6,3 @@ function [regr] = regressor(d,m)
        regr = [regressor(d,m-1) deg(d,m)];
     end
 end
-
