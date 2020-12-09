@@ -1,6 +1,7 @@
 function [ysim] = simulate(theta, val, param)
     % param = [na, nb, nk, m]
     
+    pow = generatePowers(param(4),param(1)+param(2));
     N = length(val.u);
     ysim = zeros(1, N);
     for i = 1:N
@@ -15,7 +16,7 @@ function [ysim] = simulate(theta, val, param)
                 regrline(param(1)+j+1-param(3)) = val.u(i-j);
             end
         end
-        regrline = regressor(regrline, param(4));
+        regrline = regressor(regrline, param(4), pow);
         ysim(i) = regrline*theta;
     end
 

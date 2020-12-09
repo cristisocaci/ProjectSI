@@ -1,10 +1,10 @@
 clear
-load("data.mat")
+load("iddata-18.mat")
 % plot(id); title("Identification data")
 % figure, plot(val); title("Validation data")
 
 na = 2; nb =2; nk = 1;
-m = 2;
+m = 8;
 
 theta = train(id, [na, nb, nk, m]);
 
