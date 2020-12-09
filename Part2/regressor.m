@@ -1,9 +1,15 @@
-function [regr] = regressor(d,m)
+function [regr] = regressor(d,m, pow)
 
-    if m == 0
-       regr = deg(d,0);
-    else
-       regr = [regressor(d,m-1) deg(d,m)];
+    l = length(d(1,:));
+    
+    if( pow == false )
+        pow = generatePowers(m,l);
     end
+    
+    cases = length(pow);
+    regr = ones(length(d(:,1)),cases);
+    for i = 1:cases
+        regr(:, i) = prod(d.^double(pow(i,:)),2);
+    end
+    
 end
-
