@@ -4,7 +4,7 @@ load("iddata-18.mat")
 % figure, plot(val); title("Validation data")
 
 na = 2; nb =2; nk = 1;
-m = 8;
+m = 4;
 
 theta = train(id, [na, nb, nk, m]);
 
