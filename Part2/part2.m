@@ -1,4 +1,3 @@
-
 clear
 load("data.mat")
 %plot(id); title("Identification data")
