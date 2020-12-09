@@ -1,5 +1,5 @@
 clear
-n = 11;k=8;
+n = 4;k=4;
 
 S = uint8(0:n);
 S = repmat({S},1,k);
