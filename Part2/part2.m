@@ -4,7 +4,7 @@ load("iddata-18.mat")
 % figure, plot(val); title("Validation data")
 
 na = 2; nb =2; nk = 1;
-m = 8;
+m = 3;
 
 theta = train(id, [na, nb, nk, m]);
 
@@ -21,4 +21,5 @@ ysim = simulate(theta, val, [na, nb, nk, m]);
 figure
 plot(ysim, 'r'), hold on
 plot(val.y, 'b'), legend("Simulation data", "Validation data")
+
 
