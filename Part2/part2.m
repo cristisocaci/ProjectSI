@@ -16,7 +16,7 @@ plot(ypred, 'r'), hold on
 plot(val.y, 'b'), legend("Prediction data", "Validation data")
 
 % simulation
-ysim = simulate(theta, val, [na, nb, nk, m]);
+ysim = simulate(theta, val, [na, nb, nk, m])';
 
 figure
 plot(ysim, 'r'), hold on
