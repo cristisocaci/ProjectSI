@@ -3,20 +3,20 @@ load("iddata-18.mat")
 % plot(id); title("Identification data")
 % figure, plot(val); title("Validation data")
 
-na = 2; nb =2; nk = 1;
-m = 8;
-
-theta = train(id.y,id.u, [na, nb, nk, m]);
+na = 4; nb =4; nk = 1;
+m = 10;
+pow=generatePowers(m, na+nb);
+theta = train(id.y,id.u, [na, nb, nk], pow);
 
 % prediction
-ypred = predict(theta, val.y, val.u, [na, nb, nk, m]);
+ypred = predict(theta, val.y, val.u, [na, nb, nk], pow);
 
 figure
 plot(ypred, 'r'), hold on
 plot(val.y, 'b'), legend("Prediction data", "Validation data")
 
 % simulation
-ysim = simulate(theta, val.u, [na, nb, nk, m])';
+ysim = simulate(theta, val.u, [na, nb, nk], pow)';
 
 figure
 plot(ysim, 'r'), hold on
