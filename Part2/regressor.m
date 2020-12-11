@@ -9,7 +9,6 @@ function [regr] = regressor(d,m, pow)
     regr = ones(length(d(:,1)),cases);
     
     for i = 1:cases % To investigate parfor
-        pow = generatePowers(m,l);
         regr(:, i) = prod(d.^double(pow(i,:)),2);
     end
 
