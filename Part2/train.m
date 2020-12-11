@@ -1,8 +1,8 @@
-function [theta] = train(id, param)
+function [theta] = train(y,u, param)
     % param = [na, nb, nk, m]
     
-    d = [-arxform(id.y', param(1), 1), arxform(id.u', param(2), param(3))];
+    d = [-arxform(y', param(1), 1), arxform(u', param(2), param(3))];
     pd = regressor(d,param(4), false); 
-    theta = pd\id.y;
+    theta = pd\y;
 
 end
