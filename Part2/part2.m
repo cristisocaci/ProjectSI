@@ -1,10 +1,19 @@
 clear
+close all
 load("iddata-18.mat")
 % plot(id); title("Identification data")
 % figure, plot(val); title("Validation data")
 
-na = 2; nb =2; nk = 1;
-m = 3;
+% na = nb = n
+% for simulation
+% n = 1 => mmax = 7;
+% n = 2 => mmax = 5;
+% n = 3 => mmax = 3;
+% n = 4 => mmax = 2;
+
+n = 4;
+na = n; nb =n; nk = 1;
+m = 2;
 pow=generatePowers(m, na+nb);
 theta = train(id.y,id.u, [na, nb, nk], pow);
 
