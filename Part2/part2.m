@@ -3,8 +3,8 @@ load("iddata-18.mat")
 % plot(id); title("Identification data")
 % figure, plot(val); title("Validation data")
 
-na = 2; nb =2; nk = 1;
-m = 3;
+na = 3; nb = 3; nk = 1;
+m =6;
 pow=generatePowers(m, na+nb);
 theta = train(id.y,id.u, [na, nb, nk], pow);
 
