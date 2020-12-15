@@ -18,5 +18,4 @@ function [ysim] = simulate(theta, u, param, pow)
         regrline = regressor(regrline, pow);
         ysim(i) = regrline*theta;
     end
-
 end
