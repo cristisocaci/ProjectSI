@@ -11,7 +11,7 @@ mse_pred_val=NaN(nmax,mmax);
 mse_sim_id=NaN(nmax,mmax);
 mse_sim_val=NaN(nmax,mmax);
 
-start=50;
+start=1;
 stop = length(id.y);
 l = start:stop;
 
