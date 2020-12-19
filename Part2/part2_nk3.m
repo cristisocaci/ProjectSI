@@ -16,7 +16,7 @@ stop = length(id.y);
 l = start:stop;
 
 for n=1:nmax
-    na = n; nb =n; nk = 1;
+    na = n; nb =n; nk = 3;
     
   for m=1:mmax
     
@@ -51,7 +51,7 @@ mseminVal=min(mseVal,[],'all');
 
 
 % Best identification plots
-na=nId; nb=nId; nk=1;
+na=nId; nb=nId; nk=3;
 m=mId;
 
 pow=generatePowers(m, na+nb);
@@ -69,7 +69,7 @@ plot(l,id.y(l), 'b'), legend("Simulation data", "Identification data")
 title({'Simulation on identification data',['MSE= ' num2str(mseminId)]});
 
 % Best validation plots
-na=nVal; nb=nVal; nk=1;
+na=nVal; nb=nVal; nk=3;
 m=mVal;
 
 pow=generatePowers(m, na+nb);
