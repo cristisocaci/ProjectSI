@@ -1,6 +1,6 @@
 function [out] = arxform(in, deg, nk)
     N = length(in);
-    out = zeros(N, deg);
+    out = in(1)*ones(N, deg);
     for i = 1:N
         for j = nk:deg+nk-1
             if i-j > 0
