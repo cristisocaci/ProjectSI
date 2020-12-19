@@ -42,8 +42,10 @@ for n=1:nmax
 end
 
 mseId = sqrt(mse_pred_id.^2 + mse_sim_id.^2);
+mseminId=min(mseId,[],'all');
 [nId,mId]=bestmse(mseId);
 mseVal = sqrt(mse_pred_val.^2 + mse_sim_val.^2);
+mseminVal=min(mseVal,[],'all');
 [nVal,mVal]=bestmse(mseVal);
 
 
@@ -58,10 +60,12 @@ ysim_id = simulate(theta, id.u, [na, nb, nk], pow);
 
 figure
 plot(l,ypred_id(l), 'r'), hold on
-plot(l,id.y(l), 'b'), legend("Prediction data", "Identification data") 
+plot(l,id.y(l), 'b'), legend("Prediction data", "Identification data")
+title({'Prediction on identification data', ['MSE= ' num2str(mseminId)]});
 figure
 plot(l,ypred_id(l), 'r'), hold on
 plot(l,id.y(l), 'b'), legend("Simulation data", "Identification data")
+title({'Simulation on identification data',['MSE= ' num2str(mseminId)]});
 
 % Best validation plots
 na=nVal; nb=nVal; nk=1;
@@ -75,9 +79,11 @@ ysim_val = simulate(theta, val.u, [na, nb, nk], pow);
 figure
 plot(l,ypred_val(l), 'r'), hold on
 plot(l,val.y(l), 'b'), legend("Prediction data", "Validation data")
+title({'Prediction on validation data',['MSE= ' num2str(mseminVal)]});
 figure
 plot(l,ysim_val(l), 'r'), hold on
 plot(l,val.y(l), 'b'), legend("Simulation data", "Validation data")
+title({'Simulation on validation data',['MSE= ' num2str(mseminVal)]});
 
 toc
 
