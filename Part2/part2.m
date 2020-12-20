@@ -12,6 +12,7 @@
 %---------------------------------------------------------%
 
 tic
+
 clear
 close all
 load("iddata-18.mat")
@@ -62,8 +63,10 @@ for n=1:nmax
 end
 
 mseId = sqrt(mse_pred_id.^2 + mse_sim_id.^2);
+mseminId=min(mseId,[],'all');
 [nId,mId]=bestmse(mseId);
 mseVal = sqrt(mse_pred_val.^2 + mse_sim_val.^2);
+mseminVal=min(mseVal,[],'all');
 [nVal,mVal]=bestmse(mseVal);
 
 
@@ -76,11 +79,21 @@ ypred_id = predict(theta, id.y, id.u, [na, nb, nk], pow, yidInit);
 ysim_id = simulate(theta, id.u, [na, nb, nk], pow, yidInit);
 
 figure
+<<<<<<< HEAD
 plot(interval,ypred_id(interval), 'r'), hold on
 plot(interval,id.y(interval), 'b'), legend("Prediction data", "Identification data") 
 figure
 plot(interval,ypred_id(interval), 'r'), hold on
 plot(interval,id.y(interval), 'b'), legend("Simulation data", "Identification data")
+=======
+plot(l,ypred_id(l), 'r'), hold on
+plot(l,id.y(l), 'b'), legend("Prediction data", "Identification data")
+title({'Prediction on identification data', ['MSE= ' num2str(mseminId)]});
+figure
+plot(l,ypred_id(l), 'r'), hold on
+plot(l,id.y(l), 'b'), legend("Simulation data", "Identification data")
+title({'Simulation on identification data',['MSE= ' num2str(mseminId)]});
+>>>>>>> f86e4d333ceb961af928872c049fba5607142f46
 
 % Best validation plots
 na=nVal; nb=nVal; nk=1;
@@ -92,11 +105,21 @@ ypred_val = predict(theta, val.y, val.u, [na, nb, nk], pow, yvalInit);
 ysim_val = simulate(theta, val.u, [na, nb, nk], pow, yvalInit);
 
 figure
+<<<<<<< HEAD
 plot(interval,ypred_val(interval), 'r'), hold on
 plot(interval,val.y(interval), 'b'), legend("Prediction data", "Validation data")
 figure
 plot(interval,ysim_val(interval), 'r'), hold on
 plot(interval,val.y(interval), 'b'), legend("Simulation data", "Validation data")
+=======
+plot(l,ypred_val(l), 'r'), hold on
+plot(l,val.y(l), 'b'), legend("Prediction data", "Validation data")
+title({'Prediction on validation data',['MSE= ' num2str(mseminVal)]});
+figure
+plot(l,ysim_val(l), 'r'), hold on
+plot(l,val.y(l), 'b'), legend("Simulation data", "Validation data")
+title({'Simulation on validation data',['MSE= ' num2str(mseminVal)]});
+>>>>>>> f86e4d333ceb961af928872c049fba5607142f46
 
 
 
