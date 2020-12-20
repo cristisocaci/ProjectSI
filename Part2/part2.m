@@ -1,8 +1,3 @@
-
-
-
-
-
 %---------------------------------------------------------%
 %                                                         %
 %               Approx Runtime: 33 seconds                %
@@ -10,9 +5,6 @@
 %                                                         %
 %                                                         %
 %---------------------------------------------------------%
-
-tic
-
 clear
 close all
 load("iddata-18.mat")
@@ -124,5 +116,3 @@ modelPred=iddata(ypred_val, val.u, val.Ts);
 compare(val, modelPred);
 figure
 compare(val, modelSim);
-toc
-
